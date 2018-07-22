@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import np.com.subratgyawali.blockchaindemo.R
 import np.com.subratgyawali.blockchaindemo.base.BaseFragment
 import np.com.subratgyawali.blockchaindemo.databinding.FragmentCurrentTransactionBinding
-import np.com.subratgyawali.blockchaindemo.domain.CurrentTransaction
+import np.com.subratgyawali.blockchaindemo.domain.TransactionModel
 import javax.inject.Inject
 
 
@@ -36,14 +36,30 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        activity!!.title = "Current Transactions"
+        showLoading(dataBinding,"Getting Current transactions")
         presenter.start()
-    }
-
-    override fun showCurrentTransaction(currentTransaction: CurrentTransaction?) {
-        dataBinding.rvCurrentTransaction.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = CurrentTransactionAdapter(currentTransaction?.currentTransactions!!,activity!!.applicationContext)
+        dataBinding.swipeRefreshLayout.setOnRefreshListener {
+            showLoading(dataBinding, "GettingCurrentTransactions")
+            presenter.start()
         }
     }
+
+    override fun showCurrentTransaction(currentTransaction: List<TransactionModel>?) {
+        dataBinding.swipeRefreshLayout.isRefreshing = false
+        showData(dataBinding)
+        currentTransaction?.let {
+            dataBinding.rvCurrentTransaction.apply {
+                layoutManager = LinearLayoutManager(activity)
+                adapter = CurrentTransactionAdapter(it, activity!!.applicationContext)
+            }
+        }?: showError(dataBinding,"No Transactions Are Available Now")
+    }
+
+    override fun onErrorGettingCurrentTransaction(error: Throwable) {
+        dataBinding.swipeRefreshLayout.isRefreshing = false
+        showError(dataBinding,error.message?.let { it }?:"Failed To Get Transaction")
+    }
+
 
 }

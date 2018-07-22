@@ -9,10 +9,11 @@ class CurrentTransactionPagePresenter @Inject constructor(val view: CurrentTrans
         repository.getCurrentTransaction()
                 .subscribe(
                         {
-                           view.showCurrentTransaction(it)
+                           view.showCurrentTransaction(it.currentTransactions)
                         },
                         {
                             it.printStackTrace()
+                            view.onErrorGettingCurrentTransaction(it)
                         },
                         {
 

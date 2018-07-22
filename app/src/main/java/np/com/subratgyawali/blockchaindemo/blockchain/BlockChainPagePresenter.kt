@@ -1,15 +1,28 @@
 package np.com.subratgyawali.blockchaindemo.blockchain
 
+import np.com.subratgyawali.blockchaindemo.data.repository.MainRepository
+import javax.inject.Inject
 
-import android.support.v4.app.Fragment
-import dagger.Module
 
+class BlockChainPagePresenter @Inject constructor(var view: BlockChainPageContract.View, var repository: MainRepository) : BlockChainPageContract.Presenter{
+    override fun start() {
+        repository.getBlockChain().subscribe(
+                {
+                    view.onBlockChainSuccess(it)
+                },
+                {
+                    it.printStackTrace()
+                    view.onErrorGettingBlockChain(it)
+                },
+                {
 
-/**
- * A simple [Fragment] subclass.
- *
- */
-@Module
-class BlockChainPagePresenter {
+                }
+        )
+    }
+
+    override fun stop() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
 }

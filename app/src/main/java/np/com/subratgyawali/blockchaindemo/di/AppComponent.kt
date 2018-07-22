@@ -29,7 +29,8 @@ import javax.inject.Singleton
     (ApiModule::class),
     (AndroidSupportInjectionModule::class),
     (ApplicationModule::class),
-    (ActivityBindingModule::class)])
+    (ActivityBindingModule::class),
+    (FragmentBindingModule::class)])
 interface AppComponent : AndroidInjector<MainApplication> {
     @Component.Builder
     interface Builder {
