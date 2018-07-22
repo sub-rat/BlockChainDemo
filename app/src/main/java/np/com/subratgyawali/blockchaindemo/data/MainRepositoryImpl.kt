@@ -8,7 +8,19 @@ import np.com.subratgyawali.blockchaindemo.data.repository.MainRepository
 import np.com.subratgyawali.blockchaindemo.domain.*
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor( var remoteRepository: MainRepository) : MainRepository {
+class MainRepositoryImpl @Inject constructor(private var remoteRepository: MainRepository) : MainRepository {
+    override fun resolveConflict(): Completable {
+        return remoteRepository.resolveConflict()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun syncAddress(): Observable<Addresses> {
+        return remoteRepository.syncAddress()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
     override fun clearTransactions(): Completable {
         return remoteRepository.clearTransactions()
                 .subscribeOn(Schedulers.io())

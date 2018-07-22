@@ -41,7 +41,7 @@ class ApiModule {
     @Provides
     fun remoteRepo(gson: Gson, client: OkHttpClient) : RetrofitApiService {
         return Retrofit.Builder()
-                .baseUrl("https://damp-springs-93480.herokuapp.com/")
+                .baseUrl("https://protected-river-83779.herokuapp.com/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())

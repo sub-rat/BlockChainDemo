@@ -39,4 +39,10 @@ interface RetrofitApiService {
     @GET("/sync/transactions")
     fun syncTransaction(): Completable
 
+    @GET("/sync/addresses")
+    fun syncAddress(): Observable<Addresses>
+
+    @GET("/nodes/resolve")
+    fun resolveConflict():Completable
+
 }

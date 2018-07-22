@@ -10,16 +10,18 @@ import np.com.subratgyawali.blockchaindemo.domain.TransactionModel
 interface CreateTransactionPageContract {
 
     interface View:BaseView<Presenter>{
-        fun onGetImageSuccess(address: Addresses)
+        fun onGetAddressSuccess(address: Addresses)
         fun onMyAddressSuccess(address: MyAddress)
         fun onCreateTransactionSuccess(response: Response)
         fun errorResponse(response: Throwable)
+        fun onSyncAddressSuccess(address: Addresses)
 
     }
 
     interface Presenter:BasePresenter{
         fun getMyAddress()
         fun createTransaction(data: TransactionModel)
+        fun syncAddress()
 
     }
 }

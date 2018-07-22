@@ -15,4 +15,6 @@ interface MainRepository {
     fun mine():Completable
     fun clearTransactions():Completable
     fun syncTransactions(): Completable
+    fun syncAddress():Observable<Addresses>
+    fun resolveConflict():Completable
 }

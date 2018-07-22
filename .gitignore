@@ -8,3 +8,9 @@
 /build
 /captures
 .externalNativeBuild
+*.apk
+*output.json
+gradle
+gradlew
+gradlew.bat
+

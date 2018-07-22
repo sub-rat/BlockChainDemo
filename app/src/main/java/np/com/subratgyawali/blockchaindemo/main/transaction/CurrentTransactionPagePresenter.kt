@@ -9,7 +9,7 @@ class CurrentTransactionPagePresenter @Inject constructor(val view: CurrentTrans
         repository.getCurrentTransaction()
                 .subscribe(
                         {
-                           view.showCurrentTransaction(it.currentTransactions)
+                            view.showCurrentTransaction(it.currentTransactions)
                         },
                         {
                             it.printStackTrace()
@@ -26,19 +26,29 @@ class CurrentTransactionPagePresenter @Inject constructor(val view: CurrentTrans
     }
 
     override fun mine() {
-        repository.mine().subscribe({},{it.printStackTrace()})
+        repository.mine().subscribe(
+                {
+                    view.onMiningSuccess()
+                    view.hideLoading()
+                },
+                {
+                    it.printStackTrace()
+                    view.hideLoading()
+                })
     }
 
     override fun clearTransactions() {
-       repository.clearTransactions()
-               .subscribe(
-                       {
-                           view.onSuccessClearTransactions()
-                       },
-                       {
-                           it.printStackTrace()
-                       }
-               )
+        repository.clearTransactions()
+                .subscribe(
+                        {
+                            view.hideLoading()
+                            view.onSuccessClearTransactions()
+                        },
+                        {
+                            it.printStackTrace()
+                            view.hideLoading()
+                        }
+                )
     }
 
     override fun syncTransactions() {
@@ -46,9 +56,11 @@ class CurrentTransactionPagePresenter @Inject constructor(val view: CurrentTrans
                 .subscribe(
                         {
                             view.onSuccessTransaction()
+                            view.hideLoading()
                         },
                         {
                             it.printStackTrace()
+                            view.hideLoading()
                         }
                 )
     }

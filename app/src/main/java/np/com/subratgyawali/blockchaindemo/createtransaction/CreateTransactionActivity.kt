@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import np.com.subratgyawali.blockchaindemo.R
 import np.com.subratgyawali.blockchaindemo.base.BaseActivity
 import np.com.subratgyawali.blockchaindemo.databinding.ActivityCreateTransactionsBinding
@@ -15,7 +14,6 @@ import np.com.subratgyawali.blockchaindemo.domain.Addresses
 import np.com.subratgyawali.blockchaindemo.domain.MyAddress
 import np.com.subratgyawali.blockchaindemo.domain.Response
 import np.com.subratgyawali.blockchaindemo.domain.TransactionModel
-import np.com.subratgyawali.blockchaindemo.main.MainActivity
 import javax.inject.Inject
 
 
@@ -42,6 +40,7 @@ class CreateTransactionActivity : BaseActivity(), CreateTransactionPageContract.
         dataBinding.button.setOnClickListener {
             var amount = dataBinding.etAmount.text.toString()
             if(amount.isNotEmpty()){
+                showLoading(dataBinding,"Creating new Transaction")
                 presenter.createTransaction(TransactionModel(amount = amount.toInt(),
                         recipient = dataBinding.tvRecipient.text.toString(),
                         sender = dataBinding.tvSender.text.toString()))
@@ -49,9 +48,15 @@ class CreateTransactionActivity : BaseActivity(), CreateTransactionPageContract.
                 dataBinding.etAmount.error = "Enter Amount"
             }
         }
+
+        dataBinding.btnSyncAddress.setOnClickListener {
+            showLoading(dataBinding,"Syncing Node Address")
+            presenter.syncAddress()
+        }
     }
 
-    override fun onGetImageSuccess(address: Addresses) {
+    override fun onGetAddressSuccess(address: Addresses) {
+        showData(dataBinding)
         if(address.addresses.isEmpty()){
             dataBinding.tvRecipient.text = "No recipient Available"
             dataBinding.button.isEnabled = false
@@ -81,8 +86,15 @@ class CreateTransactionActivity : BaseActivity(), CreateTransactionPageContract.
     }
 
     override fun errorResponse(response: Throwable) {
+        showData(dataBinding)
 
     }
+
+    override fun onSyncAddressSuccess(address: Addresses) {
+        presenter.start()
+        showData(dataBinding)
+    }
+
 
 
 }

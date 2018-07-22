@@ -10,7 +10,7 @@ class CreateTransactionPagePresenter @Inject constructor(val view:CreateTransact
        repository.getAddress()
                .subscribe(
                        {
-                           view.onGetImageSuccess(it)
+                           view.onGetAddressSuccess(it)
                        },
                        {
                            it.printStackTrace()
@@ -56,6 +56,22 @@ class CreateTransactionPagePresenter @Inject constructor(val view:CreateTransact
 
                )
     }
+
+    override fun syncAddress() {
+        repository.syncAddress()
+                .subscribe(
+                        {
+                           view.onSyncAddressSuccess(it)
+                        },
+                        {
+                            it.printStackTrace()
+                        },
+                        {
+
+                        }
+                )
+    }
+
 
 
 }

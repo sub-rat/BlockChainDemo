@@ -9,10 +9,12 @@ interface BlockChainPageContract {
     interface View:BaseView<Presenter>{
         fun onBlockChainSuccess(blockChain: BlockChain)
         fun onErrorGettingBlockChain(error: Throwable)
+        fun onSuccessConflictResolve()
 
     }
 
     interface Presenter:BasePresenter{
+        fun resolveConflict()
 
     }
 }

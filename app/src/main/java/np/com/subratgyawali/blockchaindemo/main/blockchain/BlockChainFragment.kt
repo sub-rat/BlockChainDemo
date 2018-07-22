@@ -50,7 +50,10 @@ class BlockChainFragment : BaseFragment(),BlockChainPageContract.View{
             presenter.start()
         }
 
-
+        dataBinding.resolveConflict.setOnClickListener {
+            showLoading(dataBinding,"resolving Conflict...")
+            presenter.resolveConflict()
+        }
     }
 
     override fun onBlockChainSuccess(blockChain: BlockChain) {
@@ -67,5 +70,8 @@ class BlockChainFragment : BaseFragment(),BlockChainPageContract.View{
         showError(dataBinding,error.message?.let { it }?:"Error Getting Block Chain")
     }
 
+    override fun onSuccessConflictResolve() {
+        presenter.start()
+    }
 
 }

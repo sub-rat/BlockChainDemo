@@ -11,6 +11,8 @@ interface CurrentTransactionPageContract {
         fun onErrorGettingCurrentTransaction(error: Throwable)
         fun onSuccessTransaction()
         fun onSuccessClearTransactions()
+        fun hideLoading()
+        fun onMiningSuccess()
     }
 
     interface Presenter:BasePresenter{

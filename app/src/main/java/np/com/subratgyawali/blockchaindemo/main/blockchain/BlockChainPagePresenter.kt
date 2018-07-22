@@ -5,6 +5,7 @@ import javax.inject.Inject
 
 
 class BlockChainPagePresenter @Inject constructor(var view: BlockChainPageContract.View, var repository: MainRepository) : BlockChainPageContract.Presenter{
+
     override fun start() {
         repository.getBlockChain().subscribe(
                 {
@@ -24,5 +25,17 @@ class BlockChainPagePresenter @Inject constructor(var view: BlockChainPageContra
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun resolveConflict() {
+        repository.resolveConflict()
+                .subscribe(
+                        {
+                            view.onSuccessConflictResolve()
+                        },
+                        {
+                            view.onErrorGettingBlockChain(it)
+                            it.printStackTrace()
+                        }
+                )
+    }
 
 }

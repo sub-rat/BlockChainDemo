@@ -46,6 +46,7 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
         dataBinding.btnSync.isEnabled = false
         dataBinding.btnClear.isEnabled = false
         dataBinding.mine.setOnClickListener {
+            showLoading(dataBinding,"Mining...")
             presenter.mine()
         }
 
@@ -93,6 +94,14 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
     }
 
     override fun onSuccessClearTransactions() {
+       presenter.start()
+    }
+
+    override fun hideLoading() {
+        showData(dataBinding)
+    }
+
+    override fun onMiningSuccess() {
        presenter.start()
     }
 
