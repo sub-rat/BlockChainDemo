@@ -13,4 +13,6 @@ interface MainRepository {
     fun getMyAddress():Observable<MyAddress>
     fun createTransaction(data: TransactionModel): Observable<Response>
     fun mine():Completable
+    fun clearTransactions():Completable
+    fun syncTransactions(): Completable
 }

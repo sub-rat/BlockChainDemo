@@ -64,7 +64,7 @@ class CreateTransactionActivity : BaseActivity(), CreateTransactionPageContract.
                   }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                dataBinding.tvRecipient.text = String.format("Recipient: %s",parent?.getItemAtPosition(position).toString())
+                dataBinding.tvRecipient.text = String.format(parent?.getItemAtPosition(position).toString())
             }
 
         }
@@ -73,7 +73,7 @@ class CreateTransactionActivity : BaseActivity(), CreateTransactionPageContract.
 
     override fun onMyAddressSuccess(address: MyAddress) {
         if (address.address.isNotEmpty())
-        dataBinding.tvSender.text = String.format("Sender: %s",address.address)
+        dataBinding.tvSender.text = String.format(address.address)
     }
 
     override fun onCreateTransactionSuccess(response: Response) {

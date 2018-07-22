@@ -8,6 +8,14 @@ import np.com.subratgyawali.blockchaindemo.network.RetrofitApiService
 import javax.inject.Inject
 
 class MainRemoteRepo @Inject constructor(var apiService: RetrofitApiService) : MainRepository{
+    override fun clearTransactions(): Completable {
+        return apiService.clearTransactions()
+    }
+
+    override fun syncTransactions(): Completable {
+       return apiService.syncTransaction()
+    }
+
     override fun mine(): Completable {
         return apiService.mine()
     }

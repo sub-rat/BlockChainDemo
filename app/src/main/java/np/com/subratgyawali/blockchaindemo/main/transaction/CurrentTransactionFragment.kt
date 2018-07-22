@@ -43,8 +43,18 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
             showLoading(dataBinding, "GettingCurrentTransactions")
             presenter.start()
         }
+        dataBinding.btnSync.isEnabled = false
+        dataBinding.btnClear.isEnabled = false
         dataBinding.mine.setOnClickListener {
             presenter.mine()
+        }
+
+        dataBinding.btnSync.setOnClickListener {
+            presenter.syncTransactions()
+        }
+
+        dataBinding.btnClear.setOnClickListener {
+            presenter.clearTransactions()
         }
     }
 
@@ -58,8 +68,13 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
         showData(dataBinding)
 
         currentTransaction?.let {
-            if(it.isEmpty())
-                showError(dataBinding,"No Transactions Are Available Now")
+            if(it.isEmpty()) {
+                showError(dataBinding, "No Transactions Are Available Now")
+                dataBinding.btnSync.isEnabled = true
+            }else{
+                dataBinding.btnSync.isEnabled = false
+                dataBinding.btnClear.isEnabled = true
+            }
 
             dataBinding.rvCurrentTransaction.apply {
                 layoutManager = LinearLayoutManager(activity)
@@ -71,6 +86,14 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
     override fun onErrorGettingCurrentTransaction(error: Throwable) {
         dataBinding.swipeRefreshLayout.isRefreshing = false
         showError(dataBinding,error.message?.let { it }?:"Failed To Get Transaction")
+    }
+
+    override fun onSuccessTransaction() {
+        presenter.start()
+    }
+
+    override fun onSuccessClearTransactions() {
+       presenter.start()
     }
 
 

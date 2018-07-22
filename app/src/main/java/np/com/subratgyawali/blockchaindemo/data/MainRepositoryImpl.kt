@@ -9,6 +9,18 @@ import np.com.subratgyawali.blockchaindemo.domain.*
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor( var remoteRepository: MainRepository) : MainRepository {
+    override fun clearTransactions(): Completable {
+        return remoteRepository.clearTransactions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun syncTransactions(): Completable {
+       return remoteRepository.syncTransactions()
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
+    }
+
     override fun mine(): Completable {
         return remoteRepository.mine()
                 .subscribeOn(Schedulers.io())

@@ -9,10 +9,14 @@ interface CurrentTransactionPageContract {
     interface View:BaseView<Presenter>{
         fun showCurrentTransaction(currentTransaction: List<TransactionModel>?)
         fun onErrorGettingCurrentTransaction(error: Throwable)
+        fun onSuccessTransaction()
+        fun onSuccessClearTransactions()
     }
 
     interface Presenter:BasePresenter{
         fun mine()
+        fun clearTransactions()
+        fun syncTransactions()
 
     }
 }

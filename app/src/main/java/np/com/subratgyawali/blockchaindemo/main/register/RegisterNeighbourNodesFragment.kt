@@ -31,6 +31,7 @@ class RegisterNeighbourNodesFragment : BaseFragment(), RegisterNeighbourNodesPag
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
        dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_register_neighbour_nodes, container, false)
+        setHasOptionsMenu(false)
         return  dataBinding.root
     }
 

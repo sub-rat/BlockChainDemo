@@ -35,6 +35,7 @@ class BlockChainFragment : BaseFragment(),BlockChainPageContract.View{
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         dataBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_block_chain,container,false)
+        setHasOptionsMenu(false)
         return dataBinding.root
     }
 
@@ -48,6 +49,7 @@ class BlockChainFragment : BaseFragment(),BlockChainPageContract.View{
             showLoading(dataBinding, "Getting Latest BockChain")
             presenter.start()
         }
+
 
     }
 

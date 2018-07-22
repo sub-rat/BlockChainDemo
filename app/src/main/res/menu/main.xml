@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="Create Transaction"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/sync_address"
+        android:orderInCategory="100"
+        android:title="Create Transaction"
+        app:showAsAction="never" />
 </menu>

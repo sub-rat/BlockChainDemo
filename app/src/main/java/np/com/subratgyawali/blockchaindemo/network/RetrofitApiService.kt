@@ -33,4 +33,10 @@ interface RetrofitApiService {
     @GET("/mine")
     fun mine():Completable
 
+    @GET("/transactions/clear")
+    fun clearTransactions(): Completable
+
+    @GET("/sync/transactions")
+    fun syncTransaction(): Completable
+
 }
