@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.blockchain
+package np.com.subratgyawali.blockchaindemo.main.register
 
 
 import dagger.Module
@@ -11,18 +11,18 @@ import np.com.subratgyawali.blockchaindemo.network.RetrofitApiService
 
 
 @Module
-class BlockChainFragmentModule {
+class RegisterNeighbourNodesFragmentModule {
 
     @FragmentScoped
     @Provides
-    fun providesBlockChainFragment(blockChainFragment: BlockChainFragment) : BlockChainPageContract.View{
-        return blockChainFragment
+    fun provideRegisterNeighbourNodesFragment(registerNeighbourNodesFragment: RegisterNeighbourNodesFragment): RegisterNeighbourNodesPageContract.View{
+        return registerNeighbourNodesFragment
     }
 
     @FragmentScoped
     @Provides
-    fun provideBlockChainPagePresener(view: BlockChainPageContract.View, repository: MainRepositoryImpl) : BlockChainPageContract.Presenter{
-        return BlockChainPagePresenter(view, repository)
+    fun provideRegisterNeighbourNodesPagePresenter(view: RegisterNeighbourNodesPageContract.View, repository: MainRepositoryImpl) : RegisterNeighbourNodesPageContract.Presenter{
+        return RegisterNeighbourNodesPagePresenter(view, repository)
     }
 
     @Provides

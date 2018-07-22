@@ -2,11 +2,13 @@ package np.com.subratgyawali.blockchaindemo.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import np.com.subratgyawali.blockchaindemo.blockchain.BlockChainFragment
-import np.com.subratgyawali.blockchaindemo.blockchain.BlockChainFragmentModule
+import np.com.subratgyawali.blockchaindemo.main.blockchain.BlockChainFragment
+import np.com.subratgyawali.blockchaindemo.main.blockchain.BlockChainFragmentModule
 import np.com.subratgyawali.blockchaindemo.di.scope.FragmentScoped
-import np.com.subratgyawali.blockchaindemo.transaction.CurrentTransactionFragment
-import np.com.subratgyawali.blockchaindemo.transaction.CurrentTransactionFragmentModule
+import np.com.subratgyawali.blockchaindemo.main.register.RegisterNeighbourNodesFragment
+import np.com.subratgyawali.blockchaindemo.main.register.RegisterNeighbourNodesFragmentModule
+import np.com.subratgyawali.blockchaindemo.main.transaction.CurrentTransactionFragment
+import np.com.subratgyawali.blockchaindemo.main.transaction.CurrentTransactionFragmentModule
 
 /**
  * Created by subrat on 6/25/18.
@@ -29,6 +31,10 @@ abstract class FragmentBindingModule {
     @FragmentScoped
     @ContributesAndroidInjector(modules = [(CurrentTransactionFragmentModule::class)])
     abstract fun currentTransactionFragment(): CurrentTransactionFragment
+
+    @FragmentScoped
+    @ContributesAndroidInjector(modules = [(RegisterNeighbourNodesFragmentModule::class)])
+    abstract fun registerNeighbourNodesFragment(): RegisterNeighbourNodesFragment
 
 
 }

@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.transaction
+package np.com.subratgyawali.blockchaindemo.main.transaction
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -43,12 +43,24 @@ class CurrentTransactionFragment : BaseFragment(),CurrentTransactionPageContract
             showLoading(dataBinding, "GettingCurrentTransactions")
             presenter.start()
         }
+        dataBinding.mine.setOnClickListener {
+            presenter.mine()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
     }
 
     override fun showCurrentTransaction(currentTransaction: List<TransactionModel>?) {
         dataBinding.swipeRefreshLayout.isRefreshing = false
         showData(dataBinding)
+
         currentTransaction?.let {
+            if(it.isEmpty())
+                showError(dataBinding,"No Transactions Are Available Now")
+
             dataBinding.rvCurrentTransaction.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = CurrentTransactionAdapter(it, activity!!.applicationContext)

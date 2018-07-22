@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.blockchain
+package np.com.subratgyawali.blockchaindemo.main.blockchain
 
 
 import android.databinding.DataBindingUtil

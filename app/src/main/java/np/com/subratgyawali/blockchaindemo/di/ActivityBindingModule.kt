@@ -2,6 +2,8 @@ package np.com.subratgyawali.blockchaindemo.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import np.com.subratgyawali.blockchaindemo.createtransaction.CreateTransactionActivity
+import np.com.subratgyawali.blockchaindemo.createtransaction.CreateTransactionActivityModule
 import np.com.subratgyawali.blockchaindemo.di.scope.ActivityScoped
 import np.com.subratgyawali.blockchaindemo.main.MainActivity
 import np.com.subratgyawali.blockchaindemo.main.MainActivityModule
@@ -23,4 +25,8 @@ abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = [(MainActivityModule::class),(FragmentBindingModule::class)])
     internal abstract fun mainActivity(): MainActivity
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = [(CreateTransactionActivityModule::class)])
+    internal abstract fun createTransactionActivity(): CreateTransactionActivity
 }

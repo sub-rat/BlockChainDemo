@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.transaction
+package np.com.subratgyawali.blockchaindemo.main.transaction
 
 import np.com.subratgyawali.blockchaindemo.base.BasePresenter
 import np.com.subratgyawali.blockchaindemo.base.BaseView
@@ -12,6 +12,7 @@ interface CurrentTransactionPageContract {
     }
 
     interface Presenter:BasePresenter{
+        fun mine()
 
     }
 }

@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.transaction
+package np.com.subratgyawali.blockchaindemo.main.transaction
 
 import dagger.Module
 import dagger.Provides

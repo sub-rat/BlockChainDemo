@@ -1,10 +1,9 @@
-package np.com.subratgyawali.blockchaindemo.blockchain
+package np.com.subratgyawali.blockchaindemo.main.blockchain
 
 
 import android.support.v4.app.Fragment
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
-import np.com.subratgyawali.blockchaindemo.di.scope.FragmentScoped
 
 
 /**

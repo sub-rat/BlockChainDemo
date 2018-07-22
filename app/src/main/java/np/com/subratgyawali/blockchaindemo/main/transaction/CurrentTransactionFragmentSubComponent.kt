@@ -1,8 +1,7 @@
-package np.com.subratgyawali.blockchaindemo.transaction
+package np.com.subratgyawali.blockchaindemo.main.transaction
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
-import np.com.subratgyawali.blockchaindemo.di.scope.FragmentScoped
 
 
 @Subcomponent

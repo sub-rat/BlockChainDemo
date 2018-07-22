@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.blockchain
+package np.com.subratgyawali.blockchaindemo.main.blockchain
 
 import np.com.subratgyawali.blockchaindemo.base.BasePresenter
 import np.com.subratgyawali.blockchaindemo.base.BaseView

@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.blockchain
+package np.com.subratgyawali.blockchaindemo.main.blockchain
 
 import android.content.Context
 import android.databinding.ViewDataBinding
@@ -8,7 +8,7 @@ import np.com.subratgyawali.blockchaindemo.R
 import np.com.subratgyawali.blockchaindemo.base.SelectableRecyclerViewAdapter
 import np.com.subratgyawali.blockchaindemo.databinding.ItemBlockChainHeaderBinding
 import np.com.subratgyawali.blockchaindemo.domain.Chain
-import np.com.subratgyawali.blockchaindemo.transaction.CurrentTransactionAdapter
+import np.com.subratgyawali.blockchaindemo.main.transaction.CurrentTransactionAdapter
 
 class BlockChainParentAdapter(override val dataList: List<Chain>, override val context: Context) : SelectableRecyclerViewAdapter<BlockChainParentAdapter.MyViewHolder,Chain>(dataList) {
     override fun getViewHolder(binding: ViewDataBinding, viewType: Int): MyViewHolder {

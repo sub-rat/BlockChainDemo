@@ -1,4 +1,4 @@
-package np.com.subratgyawali.blockchaindemo.transaction
+package np.com.subratgyawali.blockchaindemo.main.transaction
 
 import android.content.Context
 import android.databinding.ViewDataBinding
@@ -29,9 +29,9 @@ class CurrentTransactionAdapter(override val dataList: List<TransactionModel>, o
     inner class MyViewHolder(var itemTransactionBinding: ItemTransactionBinding) : RecyclerView.ViewHolder(itemTransactionBinding.root) {
 
         fun bind(item :TransactionModel){
-            itemTransactionBinding.tvAmount.text = item.amount.toString()
-            itemTransactionBinding.tvRecipient.text = item.recipient
-            itemTransactionBinding.tvSender.text = item.sender
+            itemTransactionBinding.tvAmount.text = String.format("Amount: %s",item.amount)
+            itemTransactionBinding.tvRecipient.text = String.format("Recipient: %s",item.recipient)
+            itemTransactionBinding.tvSender.text = String.format("Sender: %s",item.sender)
         }
     }
 }
