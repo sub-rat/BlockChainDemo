@@ -9,6 +9,12 @@ import np.com.subratgyawali.blockchaindemo.domain.*
 import javax.inject.Inject
 
 class MainRepositoryImpl @Inject constructor(private var remoteRepository: MainRepository) : MainRepository {
+    override fun getBalance(): Observable<Balance> {
+        return remoteRepository.getBalance()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+
     override fun resolveConflict(): Completable {
         return remoteRepository.resolveConflict()
                 .subscribeOn(Schedulers.io())

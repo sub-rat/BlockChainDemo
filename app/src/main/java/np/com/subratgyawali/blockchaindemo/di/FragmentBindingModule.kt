@@ -2,6 +2,8 @@ package np.com.subratgyawali.blockchaindemo.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import np.com.subratgyawali.blockchaindemo.balance.BalanceFragment
+import np.com.subratgyawali.blockchaindemo.balance.BalanceFragmentModule
 import np.com.subratgyawali.blockchaindemo.main.blockchain.BlockChainFragment
 import np.com.subratgyawali.blockchaindemo.main.blockchain.BlockChainFragmentModule
 import np.com.subratgyawali.blockchaindemo.di.scope.FragmentScoped
@@ -35,6 +37,10 @@ abstract class FragmentBindingModule {
     @FragmentScoped
     @ContributesAndroidInjector(modules = [(RegisterNeighbourNodesFragmentModule::class)])
     abstract fun registerNeighbourNodesFragment(): RegisterNeighbourNodesFragment
+
+    @FragmentScoped
+    @ContributesAndroidInjector(modules = [(BalanceFragmentModule::class)])
+    abstract fun balanceFragment(): BalanceFragment
 
 
 }

@@ -11,6 +11,7 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import np.com.subratgyawali.blockchaindemo.R
+import np.com.subratgyawali.blockchaindemo.balance.BalanceFragment
 import np.com.subratgyawali.blockchaindemo.createtransaction.CreateTransactionActivity
 import np.com.subratgyawali.blockchaindemo.main.blockchain.BlockChainFragment
 import np.com.subratgyawali.blockchaindemo.main.register.RegisterNeighbourNodesFragment
@@ -70,6 +71,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_register->{
                 fragmentTransaction(RegisterNeighbourNodesFragment())
+            }
+
+            R.id.nav_balance->{
+                fragmentTransaction(BalanceFragment.newInstance())
             }
         }
 

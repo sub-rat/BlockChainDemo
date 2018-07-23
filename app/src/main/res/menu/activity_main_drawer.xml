@@ -12,5 +12,7 @@
             android:title="Block Chain" />
         <item android:id="@+id/nav_register"
             android:title="Register"/>
+        <item android:id="@+id/nav_balance"
+            android:title="Balance"/>
     </group>
 </menu>

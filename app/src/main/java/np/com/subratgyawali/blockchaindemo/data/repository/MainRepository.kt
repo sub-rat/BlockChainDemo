@@ -17,4 +17,5 @@ interface MainRepository {
     fun syncTransactions(): Completable
     fun syncAddress():Observable<Addresses>
     fun resolveConflict():Completable
+    fun getBalance():Observable<Balance>
 }

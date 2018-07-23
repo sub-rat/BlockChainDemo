@@ -8,6 +8,10 @@ import np.com.subratgyawali.blockchaindemo.network.RetrofitApiService
 import javax.inject.Inject
 
 class MainRemoteRepo @Inject constructor(var apiService: RetrofitApiService) : MainRepository{
+    override fun getBalance(): Observable<Balance> {
+        return apiService.getBalance()
+    }
+
     override fun resolveConflict():Completable {
         return apiService.resolveConflict()
     }

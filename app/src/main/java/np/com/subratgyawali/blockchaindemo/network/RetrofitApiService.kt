@@ -45,4 +45,7 @@ interface RetrofitApiService {
     @GET("/nodes/resolve")
     fun resolveConflict():Completable
 
+    @GET("/balance")
+    fun getBalance(): Observable<Balance>
+
 }
